@@ -1,12 +1,19 @@
 {
   "dependencies": {
+    "@hono/node-server": "^1.8.2",
+    "@paralleldrive/cuid2": "^2.2.2",
     "hono": "^4.8.12"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
-    "tsx": "^4.7.1",
+    "tsx": "^4.19.2",
     "typescript": "^5.8.3"
   },
   "name": "hono",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js"
+  },
   "type": "module"
 }
