@@ -1,0 +1,74 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.0.0-beta/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedKeys": "on"
+      }
+    },
+    "enabled": true
+  },
+  "css": {
+    "linter": {
+      "enabled": false
+    }
+  },
+  "files": {
+    "experimentalScannerIgnores": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.next/**",
+      "**/coverage/**",
+      "**/out/**",
+      "**/.turbo/**",
+      "**/storybook-static/**",
+      "**/.vercel/**",
+      "**/*.min.js",
+      "**/*.min.js.map",
+      "**/*.bundle.js",
+      "**/*.bundle.js.map",
+      "**/vendor/**",
+      "**/generated/**",
+      "**/compiled/**",
+      "**/packages/supergraph-client/src/generated/**"
+    ],
+    "ignoreUnknown": false,
+    "includes": [
+      "**",
+      "!packages/supergraph-client/src/generated/**",
+      "!depreciated/**",
+      ".github/workflows/**"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "correctness": {
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error",
+        "useImportExtensions": "error"
+      },
+      "suspicious": {
+        "noExplicitAny": "off"
+      }
+    }
+  },
+  "vcs": {
+    "clientKind": "git",
+    "defaultBranch": "main",
+    "enabled": true,
+    "useIgnoreFile": true
+  }
+}

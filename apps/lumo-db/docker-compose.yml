@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  lumo-db:
+    image: timescale/timescaledb-ha:pg17
+    container_name: lumo-db-dev
+    ports:
+      - "5430:5432"
+    environment:
+      POSTGRES_USER: lumo
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: lumo
+      TIMESCALEDB_TELEMETRY: off
+    volumes:
+      - lumo-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lumo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+volumes:
+  lumo-db-data:
+    driver: local

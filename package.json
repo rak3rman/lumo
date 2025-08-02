@@ -1,0 +1,29 @@
+{
+  "author": "",
+  "description": "",
+  "devDependencies": {
+    "@biomejs/biome": "^2.1.2",
+    "@tsconfig/node20": "^20.1.4",
+    "husky": "^9.1.7",
+    "turbo": "^2.5.5"
+  },
+  "name": "lumo",
+  "packageManager": "npm@10.8.2",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "check": "biome check .",
+    "check:changed": "biome check . --changed",
+    "check:staged": "biome check . --staged",
+    "fix": "biome check . --write",
+    "fix:changed": "biome check . --write --changed",
+    "fix:staged": "biome check . --write --staged",
+    "lint": "biome lint .",
+    "prepare": "husky",
+    "test": "turbo run test"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

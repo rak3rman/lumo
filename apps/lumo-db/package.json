@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "dbmate": "^2.24.2"
+  },
+  "name": "lumo-db",
+  "private": true,
+  "scripts": {
+    "dev": "docker-compose up",
+    "dev:down": "docker-compose down",
+    "migrate": "dbmate up",
+    "migrate:down": "dbmate down",
+    "migrate:new": "dbmate new",
+    "reset": "npm run dev:down && docker volume rm lumo-db-dev_lumo-db-data 2>/dev/null || true && npm run setup",
+    "seed": "./scripts/setup-db.sh",
+    "setup": "docker-compose up -d && sleep 5 && ./scripts/setup-db.sh",
+    "setup:db": "./scripts/setup-db.sh"
+  },
+  "version": "0.0.0"
+}

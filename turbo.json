@@ -1,0 +1,75 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "concurrency": "16",
+  "globalDependencies": [
+    "turbo.json",
+    "package.json",
+    "package-lock.json",
+    "tsconfig.base.json",
+    "biome.json"
+  ],
+  "globalEnv": ["NODE_ENV", "TURBO_TEAM", "TURBO_TOKEN"],
+  "tasks": {
+    "//#check": {
+      "outputLogs": "new-only",
+      "outputs": []
+    },
+    "//#check:changed": {
+      "outputLogs": "new-only",
+      "outputs": []
+    },
+    "//#check:staged": {
+      "outputLogs": "new-only",
+      "outputs": []
+    },
+    "//#fix": {
+      "outputLogs": "new-only"
+    },
+    "//#fix:changed": {
+      "outputLogs": "new-only"
+    },
+    "//#fix:staged": {
+      "outputLogs": "new-only"
+    },
+    "//#lint": {
+      "outputLogs": "new-only"
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "!**/*.test.{ts,tsx,js,jsx}",
+        "!**/*.spec.{ts,tsx,js,jsx}",
+        "!**/coverage/**",
+        "!**/.turbo/**"
+      ],
+      "outputLogs": "errors-only",
+      "outputs": ["dist/**"]
+    },
+    "dev": {
+      "cache": false,
+      "dependsOn": ["//#lint"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "!**/dist/**",
+        "!**/.turbo/**",
+        "!**/coverage/**"
+      ],
+      "outputLogs": "new-only",
+      "persistent": true
+    },
+    "test": {
+      "dependsOn": ["^test"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "!**/dist/**",
+        "!**/.turbo/**",
+        "!**/node_modules/**",
+        "!**/coverage/**"
+      ],
+      "outputLogs": "errors-only",
+      "outputs": ["coverage/**"]
+    }
+  },
+  "ui": "tui"
+}
