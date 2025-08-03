@@ -1,0 +1,22 @@
+@keyframes borderFlash {
+  0% {
+    border-color: #d1d5db;
+    border-width: 2px;
+  }
+  25% {
+    border-color: #6b7280;
+    border-width: 2px;
+  }
+  50% {
+    border-color: #d1d5db;
+    border-width: 2px;
+  }
+  75% {
+    border-color: #6b7280;
+    border-width: 2px;
+  }
+  100% {
+    border-color: #d1d5db;
+    border-width: 2px;
+  }
+}

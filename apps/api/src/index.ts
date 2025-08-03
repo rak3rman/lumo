@@ -7,7 +7,10 @@ const app = new Hono();
 
 // Add middleware
 app.use("*", logger());
-app.use("*", cors());
+app.use("*", cors({
+  origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
+  credentials: true,
+}));
 
 // In-memory storage
 const users = new Map<
@@ -28,25 +31,24 @@ const itineraries = new Map<string, any>();
 const QUIZ_STEPS = [
   {
     data: {
-      bg_img_url: "/api/placeholder/bg/1",
+      bg_img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/2.png",
       has_next: true,
       options: [
         {
-          img_url:
-            "https://lumoagentinloop.s3.us-east-1.amazonaws.com/Terracotta+red+door+in+a+barren+land.jpg",
-          name: "Crisp and misty",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/weather+is+Warm+breezy+night.jpg",
+          name: "Warm, breezy night air",
         },
         {
-          img_url: "/api/placeholder/2",
-          name: "Dry heat with a golden sun",
-        },
-        {
-          img_url: "/api/placeholder/3",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/weather+is+raining.jpg",
           name: "A cozy drizzle",
         },
         {
-          img_url: "/api/placeholder/4",
-          name: "Warm, breezy night air",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/Dry+heat+with+a+golden+sun.jpg",
+          name: "Dry heat with a golden sun",
+        },
+        {
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/crisp+and+misty+weather.jpg",
+          name: "Crisp and misty",
         },
       ],
       prompt: "You're walking with no destination. What's the weather like?",
@@ -55,50 +57,49 @@ const QUIZ_STEPS = [
   },
   {
     data: {
-      bg_img_url: "/api/placeholder/bg/2",
+      bg_img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/3.png",
       has_next: true,
       options: [
         {
-          img_url: "/api/placeholder/1",
-          name: "Emerald green",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/Matte+black+door+in+a+barren+land+closeup.jpg",
+          name: "Matte Black",
         },
         {
-          img_url: "/api/placeholder/2",
-          name: "Terracotta red",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/ocean+blue+door+in+a+barren+land.jpg",
+          name: "Ocean Blue",
         },
         {
-          img_url: "/api/placeholder/3",
-          name: "Ocean blue",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/Terracotta+red+door+in+a+barren+land.jpg",
+          name: "Terracotta Red",
         },
         {
-          img_url: "/api/placeholder/4",
-          name: "Matte black",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/Emerald+green+door+in+a+barren+land.jpg",
+          name: "Emerald Green",
         },
       ],
-      prompt:
-        "You come across a door in the middle of nowhere. What color is it?",
+      prompt: "You come across a door in the middle of nowhere. What color is it?",
     },
     step: 2,
   },
   {
     data: {
-      bg_img_url: "/api/placeholder/bg/3",
+      bg_img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/4.png",
       has_next: true,
       options: [
         {
-          img_url: "/api/placeholder/1",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/Waves+crashing.jpg",
           name: "Waves crashing",
         },
         {
-          img_url: "/api/placeholder/2",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/Distant+music.jpg",
           name: "Distant music and laughter",
         },
         {
-          img_url: "/api/placeholder/3",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/super+windy+forest.jpg",
           name: "Wind moving through trees",
         },
         {
-          img_url: "/api/placeholder/4",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/still+water.jpg",
           name: "Silence",
         },
       ],
@@ -108,24 +109,24 @@ const QUIZ_STEPS = [
   },
   {
     data: {
-      bg_img_url: "/api/placeholder/bg/4",
+      bg_img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/6.png",
       has_next: true,
       options: [
         {
-          img_url: "/api/placeholder/1",
-          name: "A hand-drawn map",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/A+hand-drawn+map+in+a+roll.jpg",
+          name: "A hand drawn map",
         },
         {
-          img_url: "/api/placeholder/2",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/polaroid+camera.jpg",
           name: "A polaroid camera",
         },
         {
-          img_url: "/api/placeholder/3",
-          name: "A playlist",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/thermos+no+people.jpg",
+          name: "A warm drink in a thermos",
         },
         {
-          img_url: "/api/placeholder/4",
-          name: "A warm drink in a thermos",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/compass.jpg",
+          name: "A tiny compass",
         },
       ],
       prompt: "A stranger hands you something for your journey. What is it?",
@@ -134,23 +135,23 @@ const QUIZ_STEPS = [
   },
   {
     data: {
-      bg_img_url: "/api/placeholder/bg/5",
+      bg_img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/7.png",
       has_next: true,
       options: [
         {
-          img_url: "/api/placeholder/1",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/fruit.jpg",
           name: "Fresh fruit, just picked",
         },
         {
-          img_url: "/api/placeholder/2",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/Street+food+in+a+paper+wrapper.jpg",
           name: "Street food in a paper wrapper",
         },
         {
-          img_url: "/api/placeholder/3",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/Something+hot+from+a+local+cafe.jpg",
           name: "Something hot from a local café",
         },
         {
-          img_url: "/api/placeholder/4",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/A+full-course+meal+shared+at+a+long+table+no+people.jpg",
           name: "A full-course meal shared at a long table",
         },
       ],
@@ -160,23 +161,23 @@ const QUIZ_STEPS = [
   },
   {
     data: {
-      bg_img_url: "/api/placeholder/bg/6",
+      bg_img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/8.png",
       has_next: true,
       options: [
         {
-          img_url: "/api/placeholder/1",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/small+bonfire+with+campers.jpg",
           name: "Jump in — the more the merrier",
         },
         {
-          img_url: "/api/placeholder/2",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/invite2.jpg",
           name: "Join for a bit, then wander solo",
         },
         {
-          img_url: "/api/placeholder/3",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/invite3.jpg",
           name: "Politely decline and keep exploring",
         },
         {
-          img_url: "/api/placeholder/4",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/invite4.jpg",
           name: "Stay nearby, watching from a distance",
         },
       ],
@@ -186,50 +187,49 @@ const QUIZ_STEPS = [
   },
   {
     data: {
-      bg_img_url: "/api/placeholder/bg/7",
+      bg_img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/12.png",
       has_next: true,
       options: [
         {
-          img_url: "/api/placeholder/1",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/A+quiet+cabin+under+stars+.jpg",
           name: "A quiet cabin under stars",
         },
         {
-          img_url: "/api/placeholder/2",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/Rooftop+night+views.jpg",
           name: "Rooftop views of a glowing city",
         },
         {
-          img_url: "/api/placeholder/3",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/A+hammock+between+two+palm+trees+night.jpg",
           name: "A hammock between two palm trees",
         },
         {
-          img_url: "/api/placeholder/4",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/A+cozy+inn+with+candles+and+books+.jpg",
           name: "A cozy inn with candles and books",
         },
       ],
-      prompt:
-        "As night falls, you find the perfect spot to rest. What surrounds you?",
+      prompt: "As night falls, you find the perfect spot to rest. What surrounds you?",
     },
     step: 7,
   },
   {
     data: {
-      bg_img_url: "/api/placeholder/bg/8",
+      bg_img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/9.png",
       has_next: true,
       options: [
         {
-          img_url: "/api/placeholder/1",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/On+top+of+a+mountain+.jpg",
           name: "On top of a mountain",
         },
         {
-          img_url: "/api/placeholder/2",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/In+the+middle+of+a+festival+.jpg",
           name: "In the middle of a festival",
         },
         {
-          img_url: "/api/placeholder/3",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/someone+Floating+on+water+.jpg",
           name: "Floating on water",
         },
         {
-          img_url: "/api/placeholder/4",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/someone+Alone+smiling+.jpg",
           name: "Alone, smiling",
         },
       ],
@@ -239,23 +239,23 @@ const QUIZ_STEPS = [
   },
   {
     data: {
-      bg_img_url: "/api/placeholder/bg/9",
+      bg_img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/10.png",
       has_next: true,
       options: [
         {
-          img_url: "/api/placeholder/1",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/A+guidebook.jpg",
           name: "A guidebook",
         },
         {
-          img_url: "/api/placeholder/2",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/camera.jpg",
           name: "Your camera",
         },
         {
-          img_url: "/api/placeholder/3",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/outfit+on+a+hanger.jpg",
           name: "A fresh outfit",
         },
         {
-          img_url: "/api/placeholder/4",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/someone+taking+it+all+in.jpg",
           name: "Nothing — you take it all in",
         },
       ],
@@ -265,27 +265,27 @@ const QUIZ_STEPS = [
   },
   {
     data: {
-      bg_img_url: "/api/placeholder/bg/10",
+      bg_img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/11.png",
       has_next: false,
       options: [
         {
-          img_url: "/api/placeholder/1",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/yes.png",
           name: "Say yes before they finish the sentence",
         },
         {
-          img_url: "/api/placeholder/2",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/polaroid+camera.jpg",
           name: "Ask what's next",
         },
         {
-          img_url: "/api/placeholder/3",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/thermos+no+people.jpg",
           name: 'Say, "Only if I can bring someone with me"',
         },
         {
-          img_url: "/api/placeholder/4",
+          img_url: "https://lumoagentinloop.s3.us-east-1.amazonaws.com/Emerald+green+door+in+a+barren+land.jpg",
           name: "Smile and walk toward the next dream",
         },
       ],
-      prompt: 'A whisper asks: "Want to stay a little longer?" You…',
+      prompt: "A whisper asks: \"Want to stay a little longer?\" You…",
     },
     step: 10,
   },
@@ -450,10 +450,18 @@ app.get("/api/user/:userId/current-step", async (c) => {
   const userId = c.req.param("userId");
 
   try {
-    const user = users.get(userId);
+    let user = users.get(userId);
 
+    // Create user if it doesn't exist (for hardcoded userId)
     if (!user) {
-      return c.json({ error: "User not found" }, 404);
+      user = {
+        createdAt: new Date(),
+        isCompleted: false,
+        responses: "",
+        updatedAt: new Date(),
+        userId,
+      };
+      users.set(userId, user);
     }
 
     const responseCount: number = user.responses
@@ -565,10 +573,18 @@ app.post("/api/quiz/response", async (c) => {
     }
 
     // Get current user
-    const user = users.get(userId);
+    let user = users.get(userId);
 
+    // Create user if it doesn't exist (for hardcoded userId)
     if (!user) {
-      return c.json({ error: "User not found" }, 404);
+      user = {
+        createdAt: new Date(),
+        isCompleted: false,
+        responses: "",
+        updatedAt: new Date(),
+        userId,
+      };
+      users.set(userId, user);
     }
 
     if (user.isCompleted) {
@@ -680,10 +696,18 @@ app.get("/api/user/:userId/preferences", async (c) => {
   const userId = c.req.param("userId");
 
   try {
-    const user = users.get(userId);
+    let user = users.get(userId);
 
+    // Create user if it doesn't exist (for hardcoded userId)
     if (!user) {
-      return c.json({ error: "User not found" }, 404);
+      user = {
+        createdAt: new Date(),
+        isCompleted: false,
+        responses: "",
+        updatedAt: new Date(),
+        userId,
+      };
+      users.set(userId, user);
     }
 
     if (!user.isCompleted) {
@@ -706,10 +730,18 @@ app.get("/api/user/:userId/recommendations", async (c) => {
   const userId = c.req.param("userId");
 
   try {
-    const user = users.get(userId);
+    let user = users.get(userId);
 
+    // Create user if it doesn't exist (for hardcoded userId)
     if (!user) {
-      return c.json({ error: "User not found" }, 404);
+      user = {
+        createdAt: new Date(),
+        isCompleted: false,
+        responses: "",
+        updatedAt: new Date(),
+        userId,
+      };
+      users.set(userId, user);
     }
 
     if (!user.isCompleted) {
@@ -755,10 +787,18 @@ app.post("/api/user/:userId/itinerary", async (c) => {
   }
 
   try {
-    const user = users.get(userId);
+    let user = users.get(userId);
 
+    // Create user if it doesn't exist (for hardcoded userId)
     if (!user) {
-      return c.json({ error: "User not found" }, 404);
+      user = {
+        createdAt: new Date(),
+        isCompleted: false,
+        responses: "",
+        updatedAt: new Date(),
+        userId,
+      };
+      users.set(userId, user);
     }
 
     if (!user.isCompleted) {
@@ -972,10 +1012,18 @@ app.get("/api/user/:userId/status", async (c) => {
   const userId = c.req.param("userId");
 
   try {
-    const user = users.get(userId);
+    let user = users.get(userId);
 
+    // Create user if it doesn't exist (for hardcoded userId)
     if (!user) {
-      return c.json({ error: "User not found" }, 404);
+      user = {
+        createdAt: new Date(),
+        isCompleted: false,
+        responses: "",
+        updatedAt: new Date(),
+        userId,
+      };
+      users.set(userId, user);
     }
 
     const responseCount: number = user.responses
@@ -1005,7 +1053,7 @@ app.get("/", (c) => {
 });
 
 // Start the server
-const port = parseInt(process.env.PORT || "3000");
+const port = parseInt(process.env.PORT || "3001");
 console.log(`🚀 Server is running on http://localhost:${port}`);
 
 serve({

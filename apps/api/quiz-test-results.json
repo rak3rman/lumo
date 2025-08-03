@@ -1,0 +1,231 @@
+{
+  "userId": "test-user-123",
+  "responses": [
+    {
+      "step": 1,
+      "option": 0,
+      "response": {
+        "currentQuestion": 2,
+        "isComplete": false,
+        "message": "Response saved",
+        "userId": "test-user-123"
+      }
+    },
+    {
+      "step": 2,
+      "option": 1,
+      "response": {
+        "currentQuestion": 3,
+        "isComplete": false,
+        "message": "Response saved",
+        "userId": "test-user-123"
+      }
+    },
+    {
+      "step": 3,
+      "option": 2,
+      "response": {
+        "currentQuestion": 4,
+        "isComplete": false,
+        "message": "Response saved",
+        "userId": "test-user-123"
+      }
+    },
+    {
+      "step": 4,
+      "option": 0,
+      "response": {
+        "currentQuestion": 5,
+        "isComplete": false,
+        "message": "Response saved",
+        "userId": "test-user-123"
+      }
+    },
+    {
+      "step": 5,
+      "option": 1,
+      "response": {
+        "currentQuestion": 6,
+        "isComplete": false,
+        "message": "Response saved",
+        "userId": "test-user-123"
+      }
+    },
+    {
+      "step": 6,
+      "option": 2,
+      "response": {
+        "currentQuestion": 7,
+        "isComplete": false,
+        "message": "Response saved",
+        "userId": "test-user-123"
+      }
+    },
+    {
+      "step": 7,
+      "option": 3,
+      "response": {
+        "currentQuestion": 8,
+        "isComplete": false,
+        "message": "Response saved",
+        "userId": "test-user-123"
+      }
+    },
+    {
+      "step": 8,
+      "option": 0,
+      "response": {
+        "currentQuestion": 9,
+        "isComplete": false,
+        "message": "Response saved",
+        "userId": "test-user-123"
+      }
+    },
+    {
+      "step": 9,
+      "option": 1,
+      "response": {
+        "currentQuestion": 10,
+        "isComplete": false,
+        "message": "Response saved",
+        "userId": "test-user-123"
+      }
+    },
+    {
+      "step": 10,
+      "option": 2,
+      "response": {
+        "isComplete": true,
+        "message": "Quiz completed! User preferences generated.",
+        "preferences": {
+          "accommodationPreference": "boutique hotels",
+          "adventureLevel": "high",
+          "budgetPriority": "mid-range",
+          "culturalInterest": "high",
+          "foodPreference": "local cuisine",
+          "pacePreference": "moderate",
+          "preferredActivities": [
+            "temple visits",
+            "museums",
+            "historical sites",
+            "local markets"
+          ],
+          "socialPreference": "solo exploration",
+          "travelStyle": "cultural"
+        },
+        "userId": "test-user-123"
+      }
+    }
+  ],
+  "finalOutput": {
+    "isComplete": true,
+    "message": "Quiz completed! User preferences generated.",
+    "preferences": {
+      "accommodationPreference": "boutique hotels",
+      "adventureLevel": "high",
+      "budgetPriority": "mid-range",
+      "culturalInterest": "high",
+      "foodPreference": "local cuisine",
+      "pacePreference": "moderate",
+      "preferredActivities": [
+        "temple visits",
+        "museums",
+        "historical sites",
+        "local markets"
+      ],
+      "socialPreference": "solo exploration",
+      "travelStyle": "cultural"
+    },
+    "userId": "test-user-123"
+  },
+  "error": null,
+  "status": {
+    "currentQuestion": 11,
+    "hasPreferences": true,
+    "isCompleted": true,
+    "totalQuestions": 10,
+    "userId": "test-user-123"
+  },
+  "preferences": {
+    "isCompleted": true,
+    "preferences": {
+      "accommodationPreference": "boutique hotels",
+      "adventureLevel": "high",
+      "budgetPriority": "mid-range",
+      "culturalInterest": "high",
+      "foodPreference": "local cuisine",
+      "pacePreference": "moderate",
+      "preferredActivities": [
+        "temple visits",
+        "museums",
+        "historical sites",
+        "local markets"
+      ],
+      "socialPreference": "solo exploration",
+      "travelStyle": "cultural"
+    },
+    "userId": "test-user-123"
+  },
+  "recommendations": {
+    "recommendations": [
+      {
+        "bestTimeToVisit": "March-May (Cherry Blossom) or October-November (Fall Colors)",
+        "country": "Japan",
+        "description": "Perfect for your dreamy, cultural preferences with ancient temples and serene gardens.",
+        "estimatedBudgetRange": "$100-200/day",
+        "events": [
+          {
+            "dates": "July",
+            "description": "Traditional festival with parades",
+            "name": "Gion Matsuri Festival"
+          },
+          {
+            "dates": "Late March-Early April",
+            "description": "Hanami parties in Maruyama Park",
+            "name": "Cherry Blossom Season"
+          }
+        ],
+        "id": "rec_cultural_1",
+        "keyAttractions": [
+          "Fushimi Inari Shrine",
+          "Arashiyama Bamboo Grove",
+          "Kinkaku-ji (Golden Pavilion)"
+        ],
+        "local_insights": [
+          {
+            "source": "Reddit r/JapanTravel",
+            "tip": "Visit Fushimi Inari early morning (6-7am) to avoid crowds"
+          },
+          {
+            "source": "Local Blog",
+            "tip": "Try the hidden tea house in Arashiyama - locals only know about it"
+          },
+          {
+            "source": "Reddit r/Kyoto",
+            "tip": "Best ramen is at Ichiran near Kyoto Station, not the tourist spots"
+          }
+        ],
+        "locationName": "Kyoto, Japan",
+        "main_attractions": [
+          {
+            "description": "Famous shrine with thousands of torii gates",
+            "name": "Fushimi Inari Shrine",
+            "url": "https://www.tripadvisor.com/Attraction_Review-g298564-d324859"
+          },
+          {
+            "description": "Serene bamboo forest path",
+            "name": "Arashiyama Bamboo Grove",
+            "url": "https://www.tripadvisor.com/Attraction_Review-g298564-d324860"
+          },
+          {
+            "description": "Stunning golden temple",
+            "name": "Kinkaku-ji (Golden Pavilion)",
+            "url": "https://www.tripadvisor.com/Attraction_Review-g298564-d324861"
+          }
+        ],
+        "reasoning": "Matches your preference for cultural experiences and solo exploration."
+      }
+    ],
+    "userId": "test-user-123"
+  }
+}

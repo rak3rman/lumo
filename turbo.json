@@ -48,7 +48,6 @@
     },
     "dev": {
       "cache": false,
-      "dependsOn": ["//#lint"],
       "inputs": [
         "$TURBO_DEFAULT$",
         "!**/dist/**",

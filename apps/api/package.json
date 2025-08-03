@@ -2,7 +2,8 @@
   "dependencies": {
     "@hono/node-server": "^1.8.2",
     "@paralleldrive/cuid2": "^2.2.2",
-    "hono": "^4.8.12"
+    "hono": "^4.8.12",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
